@@ -1,5 +1,7 @@
 # Metodologia VIBE - Validate, Investigate, Blueprint, Execute
 
+Author: Rod Amora (CTO Berry)
+Última Atualização: 16 Fevereiro 2026
 
 ## Minha Perspectiva
 
