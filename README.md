@@ -170,3 +170,16 @@ A regra é simples: qualquer feature, bug fix ou refatoração que vá além de 
 `/work <single-task.md>` — Execução. O agente pega uma tarefa, implementa seguindo o plano, roda os testes e marca como concluída. Sem improvisação, sem desvios, sem features surpresa.
 
 Cada comando alimenta o próximo. A saída de um é a entrada do outro. O agente nunca trabalha no vazio — sempre tem contexto, sempre tem direção, sempre tem critério de pronto.
+
+
+# Slide Deck
+
+Serve presentation with:
+
+```sh
+npx serve
+```
+
+Visit:
+
+http://localhost:3000/presentation
