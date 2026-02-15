@@ -93,30 +93,6 @@ A ideia é simples: antes de deixar a IA sair codando, ela precisa passar por qu
 
 Quatro letras. Quatro fases. Um processo que transforma Vibe Coding de aposta em método.
 
-## Claude Commands
-
-Para que o VIBE não fique só na teoria, eu criei um conjunto de comandos que o Claude executa em cada fase. São skills customizadas que guiam o agente pelo processo inteiro — da descoberta até a implementação.
-
-A regra é simples: qualquer feature, bug fix ou refatoração que vá além de uma mudança trivial em uma função ou componente passa por essa sequência.
-
-`/interview` — Entrevista de descoberta. O agente me faz perguntas para entender o que eu realmente quero construir. Clarifica requisitos, elimina ambiguidades, documenta tudo em `interview.md`. Opcional, mas vale ouro quando o escopo não está claro na minha cabeça.
-
-`/research` — Mergulho na codebase. O agente investiga tudo que é relevante para a feature: arquivos, padrões, dependências, decisões anteriores. Produz um `research.md` que serve como mapa do território.
-
-`/plan` — Planejamento da solução. Recebe o `research.md` e o `interview.md` como insumo e projeta a implementação completa. Requisitos, arquitetura, decisões de design — tudo documentado em `plan.md`.
-
-`/critique` — Stress test do plano. O agente vira o próprio revisor: procura falhas, inconsistências, edge cases ignorados, decisões frágeis. Documenta tudo em `critique.md`. Se o plano não sobrevive à crítica, não merece virar código.
-
-`/update` — Refinamento. Cruza o `plan.md` com o `critique.md` e atualiza o plano incorporando as melhorias. O ciclo `/critique` → `/update` pode rodar quantas vezes for necessário até o plano estar sólido.
-
-`/tasks` — Decomposição. Quebra o plano em tarefas atômicas, sequenciais, com dependências explícitas. Cada tarefa é pequena o suficiente para ser executada sem ambiguidade.
-
-`/tests` — Definição de testes. Antes de implementar qualquer coisa, define os testes para cada tarefa. Property-based testing, unit tests — o que a tarefa exigir. O código nasce já sabendo como vai ser validado.
-
-`/work` — Execução. O agente pega uma tarefa, implementa seguindo o plano, roda os testes e marca como concluída. Sem improvisação, sem desvios, sem features surpresa.
-
-Cada comando alimenta o próximo. A saída de um é a entrada do outro. O agente nunca trabalha no vazio — sempre tem contexto, sempre tem direção, sempre tem critério de pronto.
-
 ## Estrutura de Pastas
 
 Todo o conteúdo produzido é armazenado em uma pasta chamada `.docs` e cada feature, bug-fix ou melhorias tem sua subpasta com a documentação.
@@ -163,8 +139,32 @@ Logo, uma vez que a lista de tarefas foi gerada, a implementação é segura e c
 
 # Install Commands
 
-Run this command to install the commands:
+Run this command to install Claude Code commands:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/berryconsult/berryvibe/main/install-commands.sh | bash -s -- berryconsult/berryvibe
 ```
+
+## Claude Commands
+
+Para que o VIBE não fique só na teoria, eu criei um conjunto de comandos que o Claude executa em cada fase. São skills customizadas que guiam o agente pelo processo inteiro — da descoberta até a implementação.
+
+A regra é simples: qualquer feature, bug fix ou refatoração que vá além de uma mudança trivial em uma função ou componente passa por essa sequência.
+
+`/interview` — Entrevista de descoberta. O agente me faz perguntas para entender o que eu realmente quero construir. Clarifica requisitos, elimina ambiguidades, documenta tudo em `interview.md`. Opcional, mas vale ouro quando o escopo não está claro na minha cabeça.
+
+`/research` — Mergulho na codebase. O agente investiga tudo que é relevante para a feature: arquivos, padrões, dependências, decisões anteriores. Produz um `research.md` que serve como mapa do território.
+
+`/plan <research.md, interview.md>` — Planejamento da solução. Recebe o `research.md` e o `interview.md` como insumo e projeta a implementação completa. Requisitos, arquitetura, decisões de design — tudo documentado em `plan.md`.
+
+`/critique` — Stress test do plano. O agente vira o próprio revisor: procura falhas, inconsistências, edge cases ignorados, decisões frágeis. Documenta tudo em `critique.md`. Se o plano não sobrevive à crítica, não merece virar código.
+
+`/update <critique.md>` — Refinamento. Cruza o `plan.md` com o `critique.md` e atualiza o plano incorporando as melhorias. O ciclo `/critique` → `/update` pode rodar quantas vezes for necessário até o plano estar sólido.
+
+`/tasks <plan.md>` — Decomposição. Quebra o plano em tarefas atômicas, sequenciais, com dependências explícitas. Cada tarefa é pequena o suficiente para ser executada sem ambiguidade.
+
+`/tests <tasks/*>` — Definição de testes. Antes de implementar qualquer coisa, define os testes para cada tarefa. Property-based testing, unit tests — o que a tarefa exigir. O código nasce já sabendo como vai ser validado.
+
+`/work <single-task.md>` — Execução. O agente pega uma tarefa, implementa seguindo o plano, roda os testes e marca como concluída. Sem improvisação, sem desvios, sem features surpresa.
+
+Cada comando alimenta o próximo. A saída de um é a entrada do outro. O agente nunca trabalha no vazio — sempre tem contexto, sempre tem direção, sempre tem critério de pronto.
