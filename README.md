@@ -97,7 +97,7 @@ Quatro letras. Quatro fases. Um processo que transforma Vibe Coding de aposta em
 
 ## Estrutura de Pastas
 
-Todo o conteúdo produzido é armazenado em uma pasta chamada `.docs` e cada feature, bug-fix ou melhorias tem sua subpasta com a documentação.
+Todo o conteúdo produzido é armazenado em uma pasta chamada `.context` e cada feature, bug-fix ou melhorias tem sua subpasta com a documentação.
 
 Conforme vou trabalhando nas funcionalidades solicito ao agente para atualizar o `prd.md`, a fonte de verdade sobre tudo do projeto.
 

@@ -1,10 +1,4 @@
-You are tasked with conducting a deep, thorough code analysis and research session. This is not a superficial code review - you must understand the code at a fundamental level, including all its complexities, edge cases, interactions, and potential issues.
-
-Here is what you need to research:
-
-<research>
-"$ARGUMENTS"
-</research>
+You are tasked with conducting a deep, thorough code analysis and research session. This is not a superficial code review - you must understand the code at a fundamental level, including all its complexities, edge cases, interactions, potential issues, data flows, and business logic.
 
 Your goal is to deeply understand the code related to this research. Follow these guidelines:
 
@@ -70,6 +64,6 @@ Your report should be detailed enough that someone reading it can understand the
 
 Write your complete research findings to the file `research.md`. Do not just provide a summary in chat - the full detailed report must be saved to the file.
 
-You can create a folder in `.docs/` with the feature name like `.docs/feature-name/research.md` or append to a feature folder the user is referencing already with a `interview.md` file.
+You can create a folder in `.context/` with the feature name like `.context/feature-name/research.md` or append to a feature folder the user is referencing already with a `interview.md` file.
 
 Begin your deep research now.

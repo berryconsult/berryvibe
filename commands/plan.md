@@ -186,6 +186,6 @@ Before delivering, verify:
 Deliver the PRD as a markdown file. Start writing — don't ask for confirmation on the structure.
 Save the file to `plan.md`
 
-You can create a folder in `.docs/` with the feature name like `.docs/feature-name/plan.md` or append to a feature folder the user is referencing.
+You can create a folder in `.context/` with the feature name like `.context/feature-name/plan.md` or append to a feature folder the user is referencing.
 
 Begin the plan now.
