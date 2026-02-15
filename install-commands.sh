@@ -11,6 +11,7 @@
 #   -b, --branch NAME   Git branch (default: main)
 # ─────────────────────────────────────────────────────────────────────────────
 set -euo pipefail
+shopt -s nullglob
 
 VERSION="1.0.0"
 
@@ -94,14 +95,13 @@ info "Copying commands to ${C}$COMMANDS_DIR${NC} ..."
 mkdir -p "$COMMANDS_DIR"
 copied=0
 
-for cmd in "$COMMANDS_SRC"/*.md; do
-    if [[ -f "$cmd" ]]; then
-        cmd_name=$(basename "$cmd")
-        cp -f "$cmd" "$COMMANDS_DIR/$cmd_name"
-        ok "  ${C}›${NC} $cmd_name"
-        ((copied++))
-    fi
-done
+# Use find to ensure we get all .md files
+while IFS= read -r -d '' cmd; do
+    cmd_name=$(basename "$cmd")
+    cp -f "$cmd" "$COMMANDS_DIR/$cmd_name"
+    ok "  ${C}›${NC} $cmd_name"
+    ((copied++))
+done < <(find "$COMMANDS_SRC" -maxdepth 1 -name "*.md" -type f -print0 | sort -z)
 
 info ""
 ok "${G}${BOLD}$copied${NC}${G} command(s) copied${NC}"
