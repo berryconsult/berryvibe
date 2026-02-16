@@ -195,7 +195,6 @@ When you have completed all 5 phases, generate the final specification document 
 
 ## Output
 
-If the user does not say otherwise, output the specification document to a `interview.md` file.
-You can create a folder in `.context/` with the feature name like `.context/feature-name/interview.md`.
+After you have completed all 5 phases, ask the user if they want to add anything else. If they don't, write the specification document to a `interview.md` file.
 
-Begin the interview now.
+You can create a folder in `.context/` with the feature name like `.context/feature-name/interview.md`.

@@ -4,7 +4,7 @@ description: Conduct a deep, thorough code analysis and research session. Use wh
 version: 1.0.0
 ---
 
-You are tasked with conducting a deep, thorough code analysis and research session. This is not a superficial code review - you must understand the code at a fundamental level, including all its complexities, edge cases, interactions, potential issues, data flows, and business logic.
+You are tasked with conducting a deep, thorough code analysis and research session. This is not a superficial code review - you must understand the code at a fundamental level, including all its complexities, edge cases, interactions, potential issues, data flows, and business logic related to the feature the user is asking about.
 
 Your goal is to deeply understand the code related to this research. Follow these guidelines:
 
@@ -63,7 +63,6 @@ When you have completed your deep research, write a comprehensive, detailed repo
 - Issues and Bugs Found (any problems discovered)
 - Dependencies and Interactions (how components connect)
 - Edge Cases and Error Handling (how the system handles unusual situations)
-- Recommendations (if applicable)
 - Conclusions
 
 Your report should be detailed enough that someone reading it can understand the system without looking at the code. Include code snippets where relevant to illustrate your points.
