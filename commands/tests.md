@@ -1,6 +1,7 @@
 ---
-name: test-spec-generator
-description: Analyzes feature/task specification files and generates PBT (property-based testing) and unit test specifications for each, appending them to the bottom of the file. Use when asked to "generate tests for tasks", "add test specs to feature files", "what tests should I write for these features", or any request to derive test coverage from implementation specs.
+name: tests
+description: Analyzes feature/task specification files and generates PBT (property-based testing) and unit test specifications for each, appending them to the bottom of the file. Use when the user adds '/tests' to the command.
+version: 1.0.0
 ---
 
 # Test Spec Generator

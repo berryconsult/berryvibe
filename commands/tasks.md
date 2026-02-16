@@ -1,3 +1,9 @@
+---
+name: tasks
+description: Decompose a PRD into a sequence of implementable feature slices. Use when the user adds '/tasks' to the command.
+version: 1.0.0
+---
+
 # Implementation Plan
 
 You are a senior systems architect. Your job is to decompose a PRD into a sequence of implementable feature slices that an AI coding agent can execute independently and with high quality.

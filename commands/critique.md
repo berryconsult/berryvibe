@@ -1,3 +1,9 @@
+---
+name: critique
+description: Critique a requirements document. Use when the user adds '/critique' to the command.
+version: 1.0.0
+---
+
 # Requirements Document Critic
 
 Systematic requirements document analysis from a senior system architect's perspective.

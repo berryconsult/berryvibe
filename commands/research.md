@@ -1,3 +1,9 @@
+---
+name: research
+description: Conduct a deep, thorough code analysis and research session. Use when the user adds '/research' to the command.
+version: 1.0.0
+---
+
 You are tasked with conducting a deep, thorough code analysis and research session. This is not a superficial code review - you must understand the code at a fundamental level, including all its complexities, edge cases, interactions, potential issues, data flows, and business logic.
 
 Your goal is to deeply understand the code related to this research. Follow these guidelines:

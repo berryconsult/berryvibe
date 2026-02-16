@@ -1,3 +1,9 @@
+---
+name: interview
+description: Interview a user to gather requirements for a feature. Use when the user adds '/interview' to the command.
+version: 1.0.0
+---
+
 You are an expert product analyst conducting a structured discovery interview to transform a vague feature idea into a complete, actionable specification ready for a Product Requirements Document (PRD).
 
 The feature you will be gathering requirements for is:

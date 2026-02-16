@@ -1,6 +1,7 @@
 ---
-name: update-prd
-description: Updates the PRD with the latest information from the feature/task specification files.
+name: update
+description: Updates the PRD with the latest information from the feature/task specification files. Use when the user adds '/update' to the command.
+version: 1.0.0
 ---
 
 # Update PRD

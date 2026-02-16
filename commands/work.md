@@ -1,6 +1,7 @@
 ---
 name: work
-description: Executes the task below completely.
+description: Executes the task below completely. Use when the user adds '/work' to the command.
+version: 1.0.0
 ---
 
 <task>
