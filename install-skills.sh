@@ -101,8 +101,11 @@ info "Copying commands to ${C}$CLAUDE_COMMANDS_DIR${NC} ..."
 mkdir -p "$CODEX_SKILLS_DIR" "$CLAUDE_SKILLS_DIR" "$CLAUDE_COMMANDS_DIR"
 copied=0
 
-# Use find to ensure we get all .md files
-mapfile -t -d '' cmds < <(find "$SKILLS_SRC" -maxdepth 1 -name "*.md" -type f -print0 | sort -z)
+# Use find to get all .md files (POSIX-compatible)
+cmds=()
+while IFS= read -r -d '' cmd; do
+    cmds+=("$cmd")
+done < <(find "$SKILLS_SRC" -maxdepth 1 -name "*.md" -type f -print0 | sort -z)
 
 for cmd in "${cmds[@]}"; do
     if [[ -f "$cmd" ]]; then
