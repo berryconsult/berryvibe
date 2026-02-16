@@ -43,12 +43,11 @@ This article explains how **Spotify**’s internal AI system, called **Honk**, 
 https://www.theverge.com/entertainment/879492/spotify-ceo-vibe-coding-developers-ai
 This piece reports comments from **Spotify**’s CEO on a Q4 earnings call, saying the company has “fully embraced vibe coding” and that its best engineers hadn’t written a line of code in 2026 because AI now generates the code they supervise. The article frames this as an example of how AI is changing software developer roles, shifting them from typing code to directing and validating AI‑generated implementations.
 
-
 ## A Dura Realidade
 
 Obviamente o problema **não é a tecnologia**, os novos modelos (Opus 4.6, Codex 5.3 e Minimax 2.5) deram um salto incrível em termos de qualidade e capacidade e com certeza são melhores em planejar e escrever código que a grande maioria dos programadores hoje.
 
-**Escrever código virou commodity, mas programar não se resume a escrever código.** 
+**Escrever código virou commodity, mas programar não se resume a escrever código.**
 
 Existe uma camada acima — mais estratégica, mais ambígua, mais humana — que os modelos ainda não dominam (e talvez demorem para dominar).
 
@@ -59,7 +58,6 @@ Existe uma camada acima — mais estratégica, mais ambígua, mais humana — qu
 **Traduzir entre mundos** — o programador mais valioso não é o que escreve o melhor código, é o que consegue sentar com outro humano e entender que quando ele diz "preciso de um sistema" na verdade ele precisa de um processo. Essa tradução entre linguagem de negócio e linguagem técnica exige empatia e julgamento ainda reservados à um humano.
 
 > Escrever código é um problema resolvido. O problema que nunca foi — e continua não sendo — é decidir qual código vale a pena escrever, para quem, por quê, e quais consequências aceitar. Isso é programação. E isso ainda é humano.
-
 
 ## O futuro
 
@@ -147,7 +145,23 @@ Run this command to install Claude Code commands:
 curl -fsSL https://raw.githubusercontent.com/berryconsult/berryvibe/main/install-skills.sh | bash -s -- berryconsult/berryvibe
 ```
 
-## Claude Commands
+# Development Process
+
+Para cada feature, bug fix ou refatoração, seguir o processo abaixo:
+
+1. Criar uma worktree para o feature: git worktree add -b [feature-name] [feature-name] HEAD
+2. Abre o claude code na pasta da worktree e executa `/research [texto do board de demanda]`
+3. Executa `/plan [caminho do research.md]`
+4. Executa `/critique [caminho do plan.md]`
+5. Executa `/update [caminho do critique.md]`
+6. Executa `/tasks [caminho do plan.md]`
+7. Executa `/tests [caminho das tasks/*.md]`
+8. Para cada tarefa, digite `/new` para limpar contexto e depois `/work [caminho de uma das tasks/*.md]`
+9. Commita a worktree: git commit -m "Add feature [feature-name]"
+10. Volta para a branch principal: git checkout main
+11. Deleta a worktree: git worktree remove [feature-name]
+
+## Claude Commands Disponíveis
 
 Para que o VIBE não fique só na teoria, eu criei um conjunto de comandos que o Claude executa em cada fase. São skills customizadas que guiam o agente pelo processo inteiro — da descoberta até a implementação.
 
@@ -170,7 +184,6 @@ A regra é simples: qualquer feature, bug fix ou refatoração que vá além de 
 `/work <single-task.md>` — Execução. O agente pega uma tarefa, implementa seguindo o plano, roda os testes e marca como concluída. Sem improvisação, sem desvios, sem features surpresa.
 
 Cada comando alimenta o próximo. A saída de um é a entrada do outro. O agente nunca trabalha no vazio — sempre tem contexto, sempre tem direção, sempre tem critério de pronto.
-
 
 # Slide Deck
 
