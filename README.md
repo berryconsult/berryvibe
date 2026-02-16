@@ -144,7 +144,7 @@ Logo, uma vez que a lista de tarefas foi gerada, a implementação é segura e c
 Run this command to install Claude Code commands:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/berryconsult/berryvibe/main/install-commands.sh | bash -s -- berryconsult/berryvibe
+curl -fsSL https://raw.githubusercontent.com/berryconsult/berryvibe/main/install-skills.sh | bash -s -- berryconsult/berryvibe
 ```
 
 ## Claude Commands

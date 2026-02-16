@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # ─────────────────────────────────────────────────────────────────────────────
-# install-commands.sh — command installer for Claude Code
+# install-commands.sh — skill installer for Codex and Claude Code
 #
-# Copy commands from any GitHub repo into ~/.claude/commands:
+# Copy skills from any GitHub repo into ~/.codex/skills and ~/.claude/skills:
 #
 #   curl -fsSL https://<your-host>/install-commands.sh | bash -s -- owner/repo
 #
@@ -13,7 +13,7 @@
 set -uo pipefail
 shopt -s nullglob
 
-VERSION="1.0.0"
+VERSION="1.1.0"
 
 # ── Colors (disabled if not a terminal) ──────────────────────────────────────
 if [[ -t 1 ]]; then
@@ -57,13 +57,17 @@ done
 [[ "$REPO" =~ ^[a-zA-Z0-9._-]+/[a-zA-Z0-9._-]+$ ]] || die "Invalid repo format. Use owner/repo"
 command -v git &>/dev/null || die "git is required but not found"
 
-COMMANDS_DIR="$HOME/.claude/commands"
+CODEX_SKILLS_DIR="$HOME/.codex/skills"
+CLAUDE_SKILLS_DIR="$HOME/.claude/skills"
+CLAUDE_COMMANDS_DIR="$HOME/.claude/commands"
 
 # ── Start ────────────────────────────────────────────────────────────────────
 header "install-commands v${VERSION}"
 info ""
 info "  repo     ${C}${REPO}${NC}  (${DIM}${BRANCH}${NC})"
-info "  target   ${DIM}$COMMANDS_DIR${NC}"
+info "  target   ${DIM}$CODEX_SKILLS_DIR${NC}"
+info "  target   ${DIM}$CLAUDE_SKILLS_DIR${NC}"
+info "  backup   ${DIM}$CLAUDE_COMMANDS_DIR${NC}"
 info ""
 
 # ── Clone ────────────────────────────────────────────────────────────────────
@@ -78,37 +82,44 @@ fi
 
 ok "Cloned"
 
-# ── Copy commands ─────────────────────────────────────────────────────────────
-COMMANDS_SRC="$TMP/repo/commands"
+# ── Copy skills ───────────────────────────────────────────────────────────────
+SKILLS_SRC="$TMP/repo/commands"
 
-if [[ ! -d "$COMMANDS_SRC" ]]; then
+if [[ ! -d "$SKILLS_SRC" ]]; then
     die "No commands folder found in repo"
 fi
 
-if [[ -z "$(find "$COMMANDS_SRC" -maxdepth 1 -name "*.md" -type f 2>/dev/null)" ]]; then
+if [[ -z "$(find "$SKILLS_SRC" -maxdepth 1 -name "*.md" -type f 2>/dev/null)" ]]; then
     die "No .md files found in commands folder"
 fi
 
 info ""
-info "Copying commands to ${C}$COMMANDS_DIR${NC} ..."
+info "Copying skills to ${C}$CODEX_SKILLS_DIR${NC} ..."
+info "Copying skills to ${C}$CLAUDE_SKILLS_DIR${NC} ..."
+info "Copying commands to ${C}$CLAUDE_COMMANDS_DIR${NC} ..."
 
-mkdir -p "$COMMANDS_DIR"
+mkdir -p "$CODEX_SKILLS_DIR" "$CLAUDE_SKILLS_DIR" "$CLAUDE_COMMANDS_DIR"
 copied=0
 
 # Use find to ensure we get all .md files
-mapfile -t -d '' cmds < <(find "$COMMANDS_SRC" -maxdepth 1 -name "*.md" -type f -print0 | sort -z)
+mapfile -t -d '' cmds < <(find "$SKILLS_SRC" -maxdepth 1 -name "*.md" -type f -print0 | sort -z)
 
 for cmd in "${cmds[@]}"; do
     if [[ -f "$cmd" ]]; then
-        cmd_name=$(basename "$cmd")
-        cp -f "$cmd" "$COMMANDS_DIR/$cmd_name"
-        ok "  ${C}›${NC} $cmd_name"
+        skill_name=$(basename "$cmd" .md)
+        codex_skill_dir="$CODEX_SKILLS_DIR/$skill_name"
+        claude_skill_dir="$CLAUDE_SKILLS_DIR/$skill_name"
+        mkdir -p "$codex_skill_dir" "$claude_skill_dir"
+        cp -f "$cmd" "$codex_skill_dir/SKILL.md"
+        cp -f "$cmd" "$claude_skill_dir/SKILL.md"
+        cp -f "$cmd" "$CLAUDE_COMMANDS_DIR/$(basename "$cmd")"
+        ok "  ${C}›${NC} $skill_name"
         ((copied++)) || true
     fi
 done
 
 info ""
-ok "${G}${BOLD}$copied${NC}${G} command(s) copied${NC}"
+ok "${G}${BOLD}$copied${NC}${G} skill(s) copied${NC}"
 info ""
-info "Restart Claude Code to pick them up."
+info "Restart Codex and Claude Code to pick them up."
 footer
