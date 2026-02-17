@@ -147,6 +147,9 @@ curl -fsSL https://raw.githubusercontent.com/berryconsult/berryvibe/main/install
 
 # Development Process
 
+
+## Planejamento e desenvolvimento
+
 Para cada feature, bug fix ou refatoração, seguir o processo abaixo:
 
 1. Criar uma worktree para o feature: git worktree add -b [feature-name] ../berrymax-[feature-name] HEAD
@@ -161,8 +164,16 @@ Para cada feature, bug fix ou refatoração, seguir o processo abaixo:
 8. Para cada tarefa, digite `/new` para limpar contexto e depois `/work [caminho de uma das tasks/*.md]`
 9. Executa `/guide [caminho do plan.md]` para gerar a documentação de teste da feature.
 10. Commita a worktree: git commit -m "Add feature [feature-name]"
-11. Volta para a branch principal: git checkout main
-12. Deleta a worktree: git worktree remove berrymax-[feature-name]
+11. Cria uma pull request com os commits da worktree.
+12. Rodar o `/review` para avaliar o código e feedbacks.
+13. Volta para a branch principal: git checkout main
+14. Deleta a worktree: git worktree remove berrymax-[feature-name]
+
+## Teste da funcionaldiade
+
+1. Ler o documento `guide.md` que foi produzido na etapa anterior.
+2. Executar os passos para testar a funcionalidade da feature.
+3. Se encontrar bugs, utilizar o comando `/bugfix` para tentar corrigir e documentar.
 
 ## Claude Commands Disponíveis
 
@@ -187,6 +198,8 @@ A regra é simples: qualquer feature, bug fix ou refatoração que vá além de 
 `/work <single-task.md>` — Execução. O agente pega uma tarefa, implementa seguindo o plano, roda os testes e marca como concluída. Sem improvisação, sem desvios, sem features surpresa.
 
 `/guide <spec/*>` — Documentação. Produz um guia de testes para a feature, com base nos documentos da spec. O resultado é um arquivo chamado `guide.md` na mesma pasta da feature.
+
+`/bugix <issue>` — Correção de bugs. Identifica e resolve problemas encontrados durante o teste da funcionalidade e documenta corretamente as alterações feitas.
 
 Cada comando alimenta o próximo. A saída de um é a entrada do outro. O agente nunca trabalha no vazio — sempre tem contexto, sempre tem direção, sempre tem critério de pronto.
 

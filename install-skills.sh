@@ -2,7 +2,7 @@
 # ─────────────────────────────────────────────────────────────────────────────
 # install-commands.sh — skill installer for Codex and Claude Code
 #
-# Copy skills from any GitHub repo into ~/.codex/skills and ~/.claude/skills:
+# Copy skills from any GitHub repo into ~/.codex/skills and ~/.claude/commands:
 #
 #   curl -fsSL https://<your-host>/install-commands.sh | bash -s -- owner/repo
 #
@@ -58,7 +58,6 @@ done
 command -v git &>/dev/null || die "git is required but not found"
 
 CODEX_SKILLS_DIR="$HOME/.codex/skills"
-CLAUDE_SKILLS_DIR="$HOME/.claude/skills"
 CLAUDE_COMMANDS_DIR="$HOME/.claude/commands"
 
 # ── Start ────────────────────────────────────────────────────────────────────
@@ -66,8 +65,7 @@ header "install-commands v${VERSION}"
 info ""
 info "  repo     ${C}${REPO}${NC}  (${DIM}${BRANCH}${NC})"
 info "  target   ${DIM}$CODEX_SKILLS_DIR${NC}"
-info "  target   ${DIM}$CLAUDE_SKILLS_DIR${NC}"
-info "  backup   ${DIM}$CLAUDE_COMMANDS_DIR${NC}"
+info "  target   ${DIM}$CLAUDE_COMMANDS_DIR${NC}"
 info ""
 
 # ── Clone ────────────────────────────────────────────────────────────────────
@@ -95,10 +93,9 @@ fi
 
 info ""
 info "Copying skills to ${C}$CODEX_SKILLS_DIR${NC} ..."
-info "Copying skills to ${C}$CLAUDE_SKILLS_DIR${NC} ..."
 info "Copying commands to ${C}$CLAUDE_COMMANDS_DIR${NC} ..."
 
-mkdir -p "$CODEX_SKILLS_DIR" "$CLAUDE_SKILLS_DIR" "$CLAUDE_COMMANDS_DIR"
+mkdir -p "$CODEX_SKILLS_DIR" "$CLAUDE_COMMANDS_DIR"
 copied=0
 
 # Use find to get all .md files (POSIX-compatible)
@@ -111,10 +108,8 @@ for cmd in "${cmds[@]}"; do
     if [[ -f "$cmd" ]]; then
         skill_name=$(basename "$cmd" .md)
         codex_skill_dir="$CODEX_SKILLS_DIR/$skill_name"
-        claude_skill_dir="$CLAUDE_SKILLS_DIR/$skill_name"
-        mkdir -p "$codex_skill_dir" "$claude_skill_dir"
+        mkdir -p "$codex_skill_dir"
         cp -f "$cmd" "$codex_skill_dir/SKILL.md"
-        cp -f "$cmd" "$claude_skill_dir/SKILL.md"
         cp -f "$cmd" "$CLAUDE_COMMANDS_DIR/$(basename "$cmd")"
         ok "  ${C}›${NC} $skill_name"
         ((copied++)) || true
