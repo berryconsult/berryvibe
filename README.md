@@ -183,6 +183,8 @@ A regra é simples: qualquer feature, bug fix ou refatoração que vá além de 
 
 `/work <single-task.md>` — Execução. O agente pega uma tarefa, implementa seguindo o plano, roda os testes e marca como concluída. Sem improvisação, sem desvios, sem features surpresa.
 
+`/guide <spec/*>` — Documentação. Produz um guia de testes para a feature, com base nos documentos da spec. O resultado é um arquivo chamado `guide.md` na mesma pasta da feature.
+
 Cada comando alimenta o próximo. A saída de um é a entrada do outro. O agente nunca trabalha no vazio — sempre tem contexto, sempre tem direção, sempre tem critério de pronto.
 
 # Slide Deck
