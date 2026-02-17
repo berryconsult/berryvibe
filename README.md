@@ -149,7 +149,9 @@ curl -fsSL https://raw.githubusercontent.com/berryconsult/berryvibe/main/install
 
 Para cada feature, bug fix ou refatoração, seguir o processo abaixo:
 
-1. Criar uma worktree para o feature: git worktree add -b [feature-name] [feature-name] HEAD
+1. Criar uma worktree para o feature: git worktree add -b [feature-name] ../berrymax-[feature-name] HEAD
+    - A worktree é uma cópia do projeto em uma pasta separada, com a mesma branch ativa no mesmo nível da pasta berrymax.
+    - Garanta que você vai utilizar essa pasta da worktree para iniciar o trabalho.
 2. Abre o claude code na pasta da worktree e executa `/research [texto do board de demanda]`
 3. Executa `/plan [caminho do research.md]`
 4. Executa `/critique [caminho do plan.md]`
@@ -159,7 +161,7 @@ Para cada feature, bug fix ou refatoração, seguir o processo abaixo:
 8. Para cada tarefa, digite `/new` para limpar contexto e depois `/work [caminho de uma das tasks/*.md]`
 9. Commita a worktree: git commit -m "Add feature [feature-name]"
 10. Volta para a branch principal: git checkout main
-11. Deleta a worktree: git worktree remove [feature-name]
+11. Deleta a worktree: git worktree remove berrymax-[feature-name]
 
 ## Claude Commands Disponíveis
 
