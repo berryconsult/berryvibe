@@ -22,6 +22,13 @@ You should plan based on this documentation:
 
 **Specify decisions, not options.** "We could use polling or websockets" is a design discussion. "Use websockets for real-time updates, falling back to 30s polling" is a requirement.
 
+## Best practices
+
+When working on each part of the software (backend/server and frontend/client) alternate between:
+
+- When planning backend (`server`) features use `.agents/skills/backend-developer/SKILL.md`
+- When planning frontend (`client`) features use `.agents/skills/frontend-developer/SKILL.md`
+
 ## Writing Process
 
 ### Step 1: Understand the Feature
