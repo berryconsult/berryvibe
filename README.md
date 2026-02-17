@@ -173,7 +173,7 @@ Para cada feature, bug fix ou refatoração, seguir o processo abaixo:
 
 1. Ler o documento `guide.md` que foi produzido na etapa anterior.
 2. Executar os passos para testar a funcionalidade da feature.
-3. Se encontrar bugs, utilizar o comando `/bugfix` para tentar corrigir e documentar.
+3. Se encontrar bugs, utilizar o comando `/bugfix [pasta da feature] [descrição do bug]` para tentar corrigir e documentar.
 
 ## Claude Commands Disponíveis
 
