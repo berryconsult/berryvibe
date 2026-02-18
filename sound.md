@@ -28,4 +28,4 @@ Para adicionar um prompt sonoro ao término de cada atividade do Claude Code ou 
 afplay "$HOME/.claude/hooks/alert.mp3"
 
 ```
-3. Nesta mesma pasta, adicionar o arquivo .mp3 no arquivo .zip deste repositório.
+3. Nesta mesma pasta, adicionar o arquivo alert.wav contido neste repositório (ou outro de sua preferência)
