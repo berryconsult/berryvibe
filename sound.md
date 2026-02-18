@@ -1,4 +1,4 @@
-#Adicionado sons ao Claude Code
+# Adicionando sons ao Claude Code
 
 Para adicionar um prompt sonoro ao término de cada atividade do Claude Code ou Codex, seguir os passos abaixo:
 
