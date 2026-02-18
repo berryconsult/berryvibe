@@ -163,9 +163,9 @@ Para cada feature, bug fix ou refatoração, seguir o processo abaixo:
 7. Executa `/tests [caminho das tasks/*.md]`
 8. Para cada tarefa, digite `/new` para limpar contexto e depois `/work [caminho de uma das tasks/*.md]`
 9. Executa `/guide [caminho do plan.md]` para gerar a documentação de teste da feature.
-10. Commita a worktree: git commit -m "Add feature [feature-name]"
-11. Cria uma pull request com os commits da worktree.
-12. Rodar o `/review` para avaliar o código e feedbacks.
+10. Rodar o `/review` para avaliar o código e feedbacks.
+11. Commita a worktree: git commit -m "Add feature [feature-name]"
+12. Cria uma pull request com os commits da worktree.
 13. Volta para a branch principal: git checkout main
 14. Deleta a worktree: git worktree remove berrymax-[feature-name]
 
