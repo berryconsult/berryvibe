@@ -17,6 +17,7 @@ Fix the bug. Understand why. Make sure it never happens again.
 - **Understand before you fix.** No code changes until you can explain WHY it's broken.
 - **Reproduce first.** If you can't trigger it, you can't verify the fix.
 - **Minimal changes only.** Fix the bug, nothing else. Refactor separately.
+- **Respect blast radius.** Fix in the lowest-impact file possible. Never modify core/shared/base infrastructure to fix a bug in a consumer of that infrastructure.
 - **Document every fix.** The postmortem is mandatory, not optional.
 
 ## Workflow
@@ -78,6 +79,23 @@ Pick the right strategy:
 🔧 Root Cause: [one sentence]
    Fix: [what changed and why]
 ```
+
+### 4.5 Scope Check (before writing any code)
+
+Before touching any file, classify it:
+
+| File type | Examples | Can you modify it? |
+|-----------|----------|-------------------|
+| **Isolated** | test files, single-use utils, leaf components | ✅ Yes |
+| **Shared** | helpers used by 5+ modules, config files | ⚠️ Only if the bug lives there |
+| **Core/Base** | BaseService, DB connectors, auth middleware, core types | 🚫 Only as a last resort |
+
+**Rules:**
+1. Fix at the **call site** before touching the **definition**.
+2. If the bug requires modifying a core/base file, **stop and explain why** before proceeding — get explicit confirmation.
+3. If you changed a shared or core file, document it prominently in the postmortem under a `⚠️ High-blast-radius change` section.
+
+> A test file has a circular import? Fix the import in the test. Don't refactor BaseService.
 
 ### 5. Verify
 
