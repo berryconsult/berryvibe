@@ -63,9 +63,9 @@ When you have completed your deep research, write a comprehensive, detailed repo
 - Issues and Bugs Found (any problems discovered)
 - Dependencies and Interactions (how components connect)
 - Edge Cases and Error Handling (how the system handles unusual situations)
-- Conclusions
 
 Your report should be detailed enough that someone reading it can understand the system without looking at the code. Include code snippets where relevant to illustrate your points.
+Do not make assumptions, do not have opinions or point of view, only write about your findings and what you can prove with code.
 
 Write your complete research findings to the file `research.md`. Do not just provide a summary in chat - the full detailed report must be saved to the file.
 
