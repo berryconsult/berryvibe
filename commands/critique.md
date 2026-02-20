@@ -139,3 +139,19 @@ Group by theme (Data Model, API, Security, etc.) in table format:
 # Output
 
 Create a new file called `critique.md` in the same directory as the requirements document.
+
+## Scope Calibration
+
+Before raising any issue, ask: **"Would a reasonable team actually change this based on my feedback?"**
+
+**Calibrate severity to feature complexity.** A CRUD form for internal use doesn't need rate limiting analysis. A public payments endpoint does. Match depth to risk.
+
+**The 80/20 rule applies.** Raise the 20% of issues that cause 80% of real-world pain. Skip the rest.
+
+**Suppress by default:**
+- Issues that only matter at scale the product hasn't reached
+- "Best practice" violations with no concrete failure scenario for this specific context
+- Defensive architecture for edge cases the team can handle reactively
+- Enhancements that belong in a future iteration, not the current spec
+
+**Stop when:** All CRITICAL and HIGH issues are documented, and the remaining issues are either low-risk or low-probability. A 6-item critique that unblocks the team is better than a 40-item critique that paralyzes it.
